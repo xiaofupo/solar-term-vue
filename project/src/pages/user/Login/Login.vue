@@ -8,9 +8,9 @@
       <div class="phone-item">
         <div class="item-center border-bottom">
           <label class="phone-label">手机号</label>
-          <input type="tel" class="phone" />
+          <input type="tel" class="phone" @input="search($event)" @keyup.enter="search" />
         </div>
-        <button class="btn btn-submit">发送验证码</button>
+        <button class="btn btn-submit" @click="ClickSubmit()">发送验证码</button>
       </div>
 
       <div class="phone-code border-bottom">
@@ -19,7 +19,9 @@
       </div>
       <button class="phone-submit">登录</button>
       <div class="login-deal">
-        <i  @click="handleAction()" :class="iconIndex?'iconfont icon-circle':'iconfont icon-circle1'"
+        <i
+          @click="handleAction()"
+          :class="iconIndex?'iconfont icon-circle':'iconfont icon-circle1'"
         ></i>
         <span class="deal-text">
           已完成阅读并同意
@@ -43,15 +45,37 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "login",
   data() {
-    return { iconIndex: false };
+    return {
+      iconIndex: false,
+      value: 17695772185
+    };
   },
   methods: {
     handleAction() {
       this.iconIndex = true;
+    },
+    ClickSubmit() {
+      console.log('发送验证码')
+    },
+    search(event) {
+      // console.log(event)
+      if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(event)) {
+        console.log("格式不正确!", 1.5);
+      } else {
+        // 正确就执行action事件请求code
+        console.log("正在执行");
+      }
     }
+  },
+  computed: {
+    ...mapState({
+      loginTip:state=>state.login.loginTip
+    })
+    
   }
 };
 </script>
@@ -118,7 +142,8 @@ export default {
         right: 16px;
         top: 60px;
         width: 76px;
-        height: 32px;
+        font-size: 11px;
+        line-height: 32px;
       }
     }
     .phone-code {

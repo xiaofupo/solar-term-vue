@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-#app{
+#app {
   width: 100%;
   height: 100%;
   overflow: hidden;

@@ -6,6 +6,7 @@ import yesterday from "./yesterday"
 import beforeyesterday from "./beforeyesterday"
 import user from "./user"
 import login from './login'
+import datum from './datum'
 Vue.use(Router)
 
 const routes = [
@@ -25,7 +26,8 @@ const routes = [
   ...yesterday,
   ...beforeyesterday,
   ...user,
-  ...login
+  ...login,
+  ...datum
 ]
 
 export default new Router({

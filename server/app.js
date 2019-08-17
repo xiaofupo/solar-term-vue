@@ -3,7 +3,13 @@ const express = require("express");
 
 const app = express();
 
-
+app.get('/api/loginTip', (req, res)=>{
+    res.json({
+        code: 0,
+        message: 'ok',
+        data: require('./data/changelogintip.json')
+    });
+});
 
 app.listen(9000,(err)=>{
     if(err){
