@@ -8,20 +8,21 @@
       <div class="phone-item">
         <div class="item-center border-bottom">
           <label class="phone-label">手机号</label>
-          <input type="tel" class="phone" @input="search($event)" @keyup.enter="search" />
+          <input type="tel" class="phone" v-model="loginForm.tel" />
         </div>
         <button class="btn btn-submit" @click="ClickSubmit()">发送验证码</button>
+        <button class="close_tel2" v-show="!show">重新获取({{count}}s)</button>
       </div>
 
       <div class="phone-code border-bottom">
         <label class="phone-label">验证码</label>
-        <input type="tel" class="tel" />
+        <input type="number" class="tel" v-model="loginForm.msg" />
       </div>
-      <button class="phone-submit">登录</button>
+      <button class="phone-submit" @click="submitClick()">登录</button>
       <div class="login-deal">
         <i
           @click="handleAction()"
-          :class="iconIndex?'iconfont icon-circle':'iconfont icon-circle1'"
+          :class="loginForm.check?'iconfont icon-circle':'iconfont icon-circle1'"
         ></i>
         <span class="deal-text">
           已完成阅读并同意
@@ -45,37 +46,65 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "login",
   data() {
     return {
-      iconIndex: false,
-      value: 17695772185
+      count: "",
+      show: true,
+      loginForm: {
+        tel: "",
+        seat: "",
+        check: false,
+        msg: ""
+      }
     };
   },
   methods: {
     handleAction() {
-      this.iconIndex = true;
+      this.loginForm.check = true;
     },
     ClickSubmit() {
-      console.log('发送验证码')
-    },
-    search(event) {
-      // console.log(event)
-      if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(event)) {
-        console.log("格式不正确!", 1.5);
-      } else {
-        // 正确就执行action事件请求code
-        console.log("正在执行");
+      const TIME_COUNT = 30;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.show = false;
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+          } else {
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, 1000);
       }
-    }
+    },
+    submitClick() {
+      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; // 验证是不是以13,15,18,17开头的数字
+      var num = /^\d{6}$/; // 验证是否6位数字
+      if (this.loginForm.tel === "") {
+        alert("手机号不能为空！");
+      } else if (this.loginForm.tel.length !== 11) {
+        alert("请输入11位的手机号码！");
+      } else if (!myreg.test(this.loginForm.tel)) {
+        alert("请输入有效的手机号码！");
+      } else if (this.loginForm.msg === "") {
+        alert("请填写验证码！");
+      } else if (!num.test(this.loginForm.msg)) {
+        alert("请填写正确的验证码！");
+      } else if (this.loginForm.check === false) {
+        alert("请确认勾选《用户协议》");
+      } else {
+        this.$router.push("/datum");
+      }
+    },
   },
   computed: {
     ...mapState({
-      loginTip:state=>state.login.loginTip
+      loginTip: state => state.login.loginTip
     })
-    
   }
 };
 </script>
@@ -126,6 +155,21 @@ export default {
       padding: 10px 0;
       line-height: 32px;
       font-size: 16px;
+      .close_tel2 {
+        font-size: 12px;
+        width: 91px;
+        line-height: 32px;
+        border-radius: 5px;
+        background-color: rgb(211, 211, 211);
+        color: white;
+        position: absolute;
+        right: 8px;
+        top: 60px;
+        outline: none;
+        border: 0;
+        font-weight: 400;
+        cursor: pointer;
+      }
       .item-center {
         width: 249px;
         .phone {
@@ -137,13 +181,15 @@ export default {
       .btn-submit {
         color: #999;
         border: 1px solid #999;
+        box-sizing: border-box;
         background: transparent;
         position: absolute;
-        right: 16px;
+        right: 8px;
         top: 60px;
-        width: 76px;
+        width: 91px;
         font-size: 11px;
-        line-height: 32px;
+        line-height: 30px;
+        border-radius: 5px;
       }
     }
     .phone-code {
@@ -162,6 +208,7 @@ export default {
       color: #fff;
       line-height: 46px;
       border-radius: 6px;
+      border: none;
     }
     .login-deal {
       text-align: center;

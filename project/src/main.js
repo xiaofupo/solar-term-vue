@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 import { DatetimePicker,Popup,Toast } from 'vant';
 
-import './components/index'
 Vue.use(DatetimePicker)
 Vue.use(Popup)
 Vue.use(Toast)

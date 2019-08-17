@@ -3,7 +3,7 @@ const express = require("express");
 
 const app = express();
 
-app.get('/api/loginTip', (req, res)=>{
+app.get('/api/logintip', (req, res)=>{
     res.json({
         code: 0,
         message: 'ok',

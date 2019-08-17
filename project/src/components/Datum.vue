@@ -25,7 +25,7 @@
         </div>
         <div class="datum-name from-item">
           <label class="from-label">修改昵称</label>
-          <input type="text" class="nickname" placeholder="LADYDOG" />
+          <input type="text" class="nickname" value="张三" />
         </div>
         <div class="from-item">
           <label class="from-label">性别</label>
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "datum",
   data() {
@@ -77,7 +78,8 @@ export default {
       maxDate: new Date(2020, 12, 12),
       currentDate: { years: 1999, month: 1, day: 1 },
       show: false,
-      submit: false
+      submit: false,
+      
     };
   },
   methods: {
@@ -86,11 +88,19 @@ export default {
     },
     handleSubmit() {
       this.submit = true;
+      
     },
     handleBack() {
       this.$router.back();
+    },
+    getInitData() {
+      this.$store.dispatch("login/getloginTip");
     }
-  }
+  },
+  created() {
+    this.getInitData();
+  },
+  computed: {}
 };
 </script>
 

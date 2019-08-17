@@ -1,9 +1,9 @@
-import api  from 'util/api'
-import { get } from 'util/request'
+import api from '../../util/api'
+import { get } from '../../util/request'
 
 
 const state = {
-    loginTip: '发送验证码'
+    loginTip: [],
 }
 const mutations = {
     handleLoginTip(state, params) {
@@ -11,11 +11,12 @@ const mutations = {
     }
 }
 const actions = {
-    async getloginTip({ commit, phone }) {
-        let data = await get(api.GET_LOGINTIP, { phone });
-        console.log(data)
+    async getloginTip({commit}) {
+        let data = await get(api.GET_LOGINTIP);
+        let newData = data.data
         // 设置显示的信息
-        commit('handleLoginTip',data)
+        commit('handleLoginTip',newData)
+        console.log(newData)
     }
 }
 

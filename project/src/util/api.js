@@ -1,12 +1,9 @@
 /* 定义API */
-const HOST = 'https://www.littleemmayang.com';
+const GET_LOGINTIP = '/api/logintip'
 
 
-/* 登录 */ 
-const  GET_LOGINTIP = '/api/login'
-
+/* 登录 */
 export default {
-    HOST,
     GET_LOGINTIP
 }
 
