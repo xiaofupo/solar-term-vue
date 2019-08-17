@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
     <div class="collect-icon">
       <div class="left">
@@ -113,4 +114,19 @@ export default {
     }
   }
 }
+=======
+    <div class="page user">
+        <h1>用户收藏页面</h1>
+    </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+>>>>>>> branch/jiangqin
 </style>

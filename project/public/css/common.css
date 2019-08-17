@@ -3,12 +3,23 @@ body,html,#app,.page{
     height: 100%;
 }
 .page{
+<<<<<<< HEAD
     position: absolute;
     top: 0;
     left: 0;
     bottom: 49px;
 }
 .page.subpage{
+=======
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.page.subpage{
+    width: 100%;
+>>>>>>> branch/jiangqin
     bottom: 0;
     z-index: 10;
 }

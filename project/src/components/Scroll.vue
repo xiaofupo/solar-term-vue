@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="wrapper" ref="wrapper">
     <slot></slot>
   </div>
@@ -51,3 +52,19 @@ export default {
   height: 100%;
 }
 </style>
+=======
+    <div>
+
+    </div>
+</template>
+
+<script>
+export default {
+    name:"app-scroll"
+}
+</script>
+
+<style>
+
+</style>
+>>>>>>> branch/jiangqin
