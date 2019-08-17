@@ -1,37 +1,29 @@
 <template>
     <div class="page pic-group">
-        <app-header title="" class="border-bottom"></app-header>
-        <div class="pic-group-content">
-            <div class="img" v-for=" (item,index) in imgList " :key="index">
-                <img :src="item.url" alt="">
-            </div>
-        </div>
-        <div class="bottom-title border-top">
+        <app-header title=""></app-header>
+        <pic :value="imgList" @input="handleAction" v-if="imgList" :key="keyVal"/>
+        <div class="bottom-title">
             <h2>
                 {{picData.title}}
-                <span>{{imgList.length}}</span>
+                <span v-if="imgList"><span>{{keyVal}}</span>/{{imgList.length}}</span>
             </h2>
         </div>
-
-        <div>
-            <router-link to="">
-                <span>应用评分</span>
-                <span>箭头</span>
-            </router-link>
-        </div>
     </div>
-
-
-
-
 </template>
 
 <script>
 import Header from "./Header";
+import PicSwiper from "./picSwiper";
 import {mapState,mapMutations} from "vuex";
 export default {
+    data() {
+        return {
+            keyVal:0
+        }
+    },
     components:{
-        [Header.name]:Header
+        [Header.name]:Header,
+        [PicSwiper.name]:PicSwiper
     },
     computed: {
         ...mapState({
@@ -40,10 +32,24 @@ export default {
         imgList(){
             return this.picData.img
         }
-
+    },
+    methods: {
+        handleAction(){
+            let ele = this.imgList.shift();
+            this.imgList.push(ele);
+        }
     },
     created() {
         this.$store.dispatch("detail/requestPicDataAction");
+    },
+    watch: {
+        imgList(){
+            //为了让picSwiper组件重新渲染
+            if(this.keyVal===this.imgList.length){
+                this.keyVal = 0;
+            }
+            this.keyVal ++; 
+        }
     },
 }
 </script>
@@ -51,36 +57,8 @@ export default {
 <style lang="scss" scoped>
 .pic-group{
     background: #fff;
-
-    .pic-group-content{
-        width: 100%;
-        position: absolute;
-        top:44px;
-        bottom: 49px;
-        .img{
-            width: 85%;
-            height: 85%;
-            position: absolute;
-            background: transparent;
-            z-index: 20;
-            @for $i from 1 through 5{
-                 &:nth-of-type(#{$i}){
-                    right: 10px * $i;
-                    top: 15px * $i;
-                    z-index: 20 - (2*$i);
-                }
-            }
-            img{
-                width: 90%;
-                margin: 0 auto;
-                height: 100%;
-                border-radius: 10px;
-                box-shadow: 0 0 20px #e4e0e0; 
-                position: relative;
-                
-            }
-        }
-    }
+    overflow: hidden;
+   
     .bottom-title{
         width: 100%;
         height: 49px;

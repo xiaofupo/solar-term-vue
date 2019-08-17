@@ -3,17 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-<<<<<<< HEAD
-export default new Vuex.Store({
-  state: {
-    
-  },
-  mutations: {
-
-  },
-  actions: {
-
-=======
 //引入模块
 import detail from "./modules/detail";//详情页的仓库
 
@@ -27,6 +16,5 @@ export default new Vuex.Store({
   state,
   modules:{
     detail,
->>>>>>> branch/jiangqin
   }
 })

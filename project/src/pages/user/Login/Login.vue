@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div id="Login" style="background: url(../images/login.png)no-repeat 100% 100%;">
     <div class="login-image">
       <i class="iconfont icon-back"></i>
@@ -41,16 +40,10 @@
       </div>
     </div>
   </div>
-=======
-    <div class="page">
-        <h1>登录页面</h1>
-    </div>
->>>>>>> branch/jiangqin
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
   name: "login",
   data() {
     return { iconIndex: false };
@@ -188,12 +181,4 @@ export default {
     }
   }
 }
-=======
-
-}
-</script>
-
-<style>
-
->>>>>>> branch/jiangqin
 </style>

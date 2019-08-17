@@ -1,18 +1,14 @@
 /*服务器代码*/
 const express = require("express");
-<<<<<<< HEAD
-
-const app = express();
-
-=======
 const {mock} = require("mockjs");
 
 const app = express();
 
+//处理图组性情也的数据请求
 app.get("/api/detail/picGroup_detail",(req,res)=>{
     let data = mock({
         code: 0,
-        message: 'ok',
+        msg: 'ok',
         data : {
             title:"这是图组的标题",
             'img|3':[
@@ -27,7 +23,6 @@ app.get("/api/detail/picGroup_detail",(req,res)=>{
 })
 
 
->>>>>>> branch/jiangqin
 
 
 app.listen(9000,(err)=>{
