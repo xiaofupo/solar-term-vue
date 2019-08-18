@@ -25,7 +25,7 @@
         </div>
         <div class="datum-name from-item">
           <label class="from-label">修改昵称</label>
-          <input type="text" class="nickname" value="张三" />
+          <input type="text" class="nickname"  v-model="loginTip.name" />
         </div>
         <div class="from-item">
           <label class="from-label">性别</label>
@@ -100,7 +100,11 @@ export default {
   created() {
     this.getInitData();
   },
-  computed: {}
+  computed: {
+    ...mapState({
+      loginTip:state=>state.login.loginTip
+    })
+  }
 };
 </script>
 
