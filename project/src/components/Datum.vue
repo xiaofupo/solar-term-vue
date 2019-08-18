@@ -48,6 +48,7 @@
               :max-date="maxDate"
               v-model="currentDate"
               type="date"
+              ref="birthday"
             />
           </van-popup>
         </div>
@@ -103,7 +104,7 @@ export default {
   computed: {
     ...mapState({
       loginTip:state=>state.login.loginTip
-    })
+    }),
   }
 };
 </script>
