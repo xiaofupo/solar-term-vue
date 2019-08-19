@@ -65,6 +65,7 @@ export default {
     handleAction() {
       this.loginForm.check = true;
     },
+    //基础判断手机验证状态
     ClickSubmit() {
       const TIME_COUNT = 30;
       var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; // 验证是不是以13,15,18,17开头的数字
@@ -107,6 +108,7 @@ export default {
       this.$store.dispatch("login/getloginTip")
     }
   },
+  //得到数据相应的数据
   computed: {
     ...mapMutations({
       loginTel:state=>state.login.loginTel
@@ -115,6 +117,7 @@ export default {
   created(){
     this.getlogintip();
   },
+  //监听手机号码 触发验证码发送到手机上
   watch:{
     loginForm(tel){
       this.$store.commit('login/getloginTip',tel)

@@ -16,8 +16,8 @@
           <img src alt="pic" />
         </div>
       </div>
-      <CollectDetail />
-      <div class="collect-content" style="display:none">
+      <CollectDetail :loginData='loginData' v-if="loginTip"/>
+      <div class="collect-content" v-if="!loginTip">
         <div class="collect-content-pic">
           <img src alt="Login" />
         </div>
@@ -31,9 +31,16 @@
 import CollectDetail from "./children/detail";
 export default {
   name: "collect",
+  data(){
+    return{
+      loginTip:false
+    }
+  },
   components: {
     CollectDetail
-  }
+  },
+  //得到登陆数据判断收藏用户状态
+  
 };
 </script>
 

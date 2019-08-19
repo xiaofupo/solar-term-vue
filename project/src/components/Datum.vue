@@ -89,7 +89,6 @@ export default {
     },
     handleSubmit() {
       this.submit = true;
-      
     },
     handleBack() {
       this.$router.back();
@@ -101,6 +100,7 @@ export default {
   created() {
     this.getInitData();
   },
+  //登陆后填入信息，和读取用户已存入的信息
   computed: {
     ...mapState({
       loginTip:state=>state.login.loginTip
