@@ -21,6 +21,13 @@ const routes = [
     path: '/share/:id',//分享页
     component: ()=>import('../pages/common/Share/Share'),
   },
+<<<<<<< HEAD
+=======
+  {
+    path: '/detail',//分享页
+    component: ()=>import('../pages/common/Detail/Detail'),
+  },
+>>>>>>> duqiyu
   ...home,
   ...yesterday,
   ...beforeyesterday,
