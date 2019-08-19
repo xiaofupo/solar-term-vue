@@ -7,6 +7,8 @@ import VueTouch from 'vue-touch'
 Vue.use(VueTouch, {name: 'v-touch'})
 import { DatetimePicker,Popup,Toast } from 'vant';
 
+Vue.config.productionTip = false
+
 Vue.use(DatetimePicker)
 Vue.use(Popup)
 Vue.use(Toast)

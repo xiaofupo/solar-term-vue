@@ -1,6 +1,7 @@
 <template>
-    <div class="page">
-        <h1>消息详情页</h1>
+    <div class="page" id="message">
+      <h1>通知页面</h1>
+      
     </div>
 </template>
 
@@ -10,6 +11,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+#message{
+  background: pink;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  position: absolute;
+}
 
 </style>
