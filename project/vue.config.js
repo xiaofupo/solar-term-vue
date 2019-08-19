@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
   devServer: {
     proxy: {
         '/api': {
@@ -8,3 +9,9 @@ module.exports = {
     }
   }
 };
+=======
+    devServer: {
+      proxy: "http://localhost:9000"
+    }
+  };
+>>>>>>> branch/jiangqin

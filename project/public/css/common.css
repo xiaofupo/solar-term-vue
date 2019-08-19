@@ -3,12 +3,14 @@ body,html,#app,.page{
     height: 100%;
 }
 .page{
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 49px;
+    bottom: 0;
 }
 .page.subpage{
+    width: 100%;
     bottom: 0;
     z-index: 10;
 }

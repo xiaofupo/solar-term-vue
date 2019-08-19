@@ -5,7 +5,6 @@ import home from "./home"
 import yesterday from "./yesterday"
 import beforeyesterday from "./beforeyesterday"
 import user from "./user"
-
 Vue.use(Router)
 
 const routes = [
@@ -18,12 +17,18 @@ const routes = [
     component: ()=>import('../pages/common/Comment/Comment'),
   },
   {
-    path: '/share/:id',//分享页
+    name:"share",
+    path: '/share',//分享页
     component: ()=>import('../pages/common/Share/Share'),
   },
   {
+<<<<<<< HEAD
     path: '/detail',//分享页
     component: ()=>import('../pages/common/Detail/Detail'),
+=======
+    path:"/pic-group",
+    component:()=>import("../pages/common/PicGroup/PicGroup")
+>>>>>>> branch/jiangqin
   },
   ...home,
   ...yesterday,
