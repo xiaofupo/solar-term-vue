@@ -4,6 +4,7 @@ const express = require("express");
 
 const app = express();
 
+<<<<<<< HEAD
 //请求启动页背景图
 app.get("/api/start/nav/url",(req,res)=>{
     let data =  mock({
@@ -113,6 +114,15 @@ app.get("/api/home/nav/url",(req,res)=>{
     })
     res.json(data)
 })
+=======
+app.get('/api/logintip', (req, res)=>{
+    res.json({
+        code: 0,
+        message: 'ok',
+        data: require('./data/changelogintip.json')
+    });
+});
+>>>>>>> prokerface
 
 app.listen(9000,(err)=>{
     if(err){

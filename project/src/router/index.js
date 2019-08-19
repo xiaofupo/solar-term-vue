@@ -5,6 +5,11 @@ import home from "./home"
 import yesterday from "./yesterday"
 import beforeyesterday from "./beforeyesterday"
 import user from "./user"
+<<<<<<< HEAD
+=======
+import login from './login'
+import datum from './datum'
+>>>>>>> prokerface
 Vue.use(Router)
 
 const routes = [
@@ -32,7 +37,13 @@ const routes = [
   ...home,
   ...yesterday,
   ...beforeyesterday,
+<<<<<<< HEAD
   ...user
+=======
+  ...user,
+  ...login,
+  ...datum
+>>>>>>> prokerface
 ]
 
 export default new Router({

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+<<<<<<< HEAD
 Vue.use(Vuex)
 
 //引入模块
@@ -35,5 +36,13 @@ export default new Vuex.Store({
   modules:{
     home,
     detail,
+=======
+import login from './modules/login'
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  modules:{
+    login
+>>>>>>> prokerface
   }
 })

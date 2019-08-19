@@ -3,11 +3,16 @@ import App from './App.vue'
 import router from './router'
 
 import store from './store'
+<<<<<<< HEAD
 import VueTouch from 'vue-touch'
 Vue.use(VueTouch, {name: 'v-touch'})
+=======
+import { DatetimePicker,Popup,Toast } from 'vant';
+>>>>>>> prokerface
 
-Vue.config.productionTip = false
-
+Vue.use(DatetimePicker)
+Vue.use(Popup)
+Vue.use(Toast)
 new Vue({
   router,
   store,

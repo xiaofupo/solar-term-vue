@@ -1,7 +1,17 @@
 /* 定义API */
+<<<<<<< HEAD
 //请求启动页面背景图
 const START_NAV_URL = '/api/start/nav/url';
 const HOME_NAV_URL = '/api/home/nav/url';
+=======
+const GET_LOGINTIP = '/api/logintip'
+
+
+/* 登录 */
+export default {
+    GET_LOGINTIP
+}
+>>>>>>> prokerface
 
 //请求详情页----图组详情页的数据
 const GET_PIC_GROUP_API = "/api/detail/picGroup_detail";
