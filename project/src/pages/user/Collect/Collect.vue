@@ -24,6 +24,7 @@
         <div class="collect-content-title">暂无收藏</div>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
