@@ -67,7 +67,8 @@ export default {
             }
         },
         shareImg(){
-            this.$parent.shareImgAction();
+            // console.log(this.$parent.$parent.shareImgAction);
+             this.$parent.$parent.shareImgAction();
         },
         goComment(){
             this.$router.push({path:"/comment/"+this.pageId})

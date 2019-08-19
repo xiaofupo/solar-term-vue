@@ -22,13 +22,12 @@ const routes = [
     component: ()=>import('../pages/common/Share/Share'),
   },
   {
-<<<<<<< HEAD
     path: '/detail',//分享页
     component: ()=>import('../pages/common/Detail/Detail'),
-=======
+  },
+  {
     path:"/pic-group",
     component:()=>import("../pages/common/PicGroup/PicGroup")
->>>>>>> branch/jiangqin
   },
   ...home,
   ...yesterday,

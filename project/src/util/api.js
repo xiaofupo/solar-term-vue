@@ -1,13 +1,7 @@
 /* 定义API */
-<<<<<<< HEAD
 //请求启动页面背景图
 const START_NAV_URL = '/api/start/nav/url';
 const HOME_NAV_URL = '/api/home/nav/url';
-/* 输出API */
-export default{
-  START_NAV_URL,
-  HOME_NAV_URL
-=======
 
 //请求详情页----图组详情页的数据
 const GET_PIC_GROUP_API = "/api/detail/picGroup_detail";
@@ -22,6 +16,7 @@ export default {
     GET_PIC_GROUP_API,
     GET_COMMENT_API,
     GET_USER_INFO_API,
-    GET_PAGE_INFO_API
->>>>>>> branch/jiangqin
+    GET_PAGE_INFO_API,
+    START_NAV_URL,
+    HOME_NAV_URL
 }

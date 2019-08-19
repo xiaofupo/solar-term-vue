@@ -1,11 +1,9 @@
 /*服务器代码*/
 const {mock} = require('mockjs')
 const express = require("express");
-const {mock} = require("mockjs");
 
 const app = express();
 
-<<<<<<< HEAD
 //请求启动页背景图
 app.get("/api/start/nav/url",(req,res)=>{
     let data =  mock({
@@ -18,8 +16,8 @@ app.get("/api/start/nav/url",(req,res)=>{
             }
         ]
     })
-    res.json(data)
-=======
+    res.json(data);
+})
 //处理图组详情页的数据请求
 app.get("/api/detail/picGroup_detail",(req,res)=>{
     let data = mock({
@@ -99,7 +97,6 @@ app.get("/api/page/info",(req,res)=>{
         
     })
     res.json(data); 
->>>>>>> branch/jiangqin
 })
 
 //请求主页背景图

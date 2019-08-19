@@ -1,21 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
-<<<<<<< HEAD
-import home from './modules/home'
-export default new Vuex.Store({
-  state: {
-    // homeindex:0,
-  },
-  mutations: {
-=======
 
 //引入模块
 import detail from "./modules/detail";//详情页的仓库
 import api from "../util/api"
 import { get } from '../util/request';
+import home from './modules/home';
 
->>>>>>> branch/jiangqin
 
 //全局状态
 const state = {
@@ -28,11 +20,6 @@ const mutations = {
   }
 }
 
-<<<<<<< HEAD
-  },
-  modules:{
-    home,
-=======
 const actions = {
   //请求页面数据
   async requestGetPageDataAction(context,param){
@@ -46,7 +33,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules:{
+    home,
     detail,
->>>>>>> branch/jiangqin
   }
 })
