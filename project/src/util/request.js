@@ -9,6 +9,7 @@ export const get = (url, params = {})=>{
             if(response.status === 200 && (response.data.code === 0 || response.data.code==="200" || response.data.status === 0)){
                 resolve(response.data);
             }else{
+                console.log(response);
                 console.log('请求失败');
             }
         })

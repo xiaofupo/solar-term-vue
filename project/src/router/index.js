@@ -17,7 +17,8 @@ const routes = [
     component: ()=>import('../pages/common/Comment/Comment'),
   },
   {
-    path: '/share/:id',//分享页
+    name:"share",
+    path: '/share',//分享页
     component: ()=>import('../pages/common/Share/Share'),
   },
   {

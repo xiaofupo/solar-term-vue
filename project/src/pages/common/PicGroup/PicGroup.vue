@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Header from "./Header";
+import Header from "../../../components/Header";
 import PicSwiper from "./picSwiper";
 import {mapState,mapMutations} from "vuex";
 export default {

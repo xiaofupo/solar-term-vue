@@ -1,7 +1,8 @@
 <template>
-<<<<<<< HEAD
   <div class="wrapper" ref="wrapper">
-    <slot></slot>
+    <div class="scroll-content">
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -13,12 +14,16 @@ export default {
     return {};
   },
   mounted() {
-    this.scroll = new BScroll(this.$refs.wrapper, {
+    let scroll = this.scroll = new BScroll(this.$refs.wrapper, {
       probeType: 1,
       tap:true,
       click:true,
       pullUpLoad:true
     });    
+     // 监听滚动开始前的事件
+    scroll.on('beforeScrollStart', ()=>{
+        scroll.refresh();
+    })
   },
   methods:{
      handleScrollTo(y){
@@ -50,21 +55,6 @@ export default {
 <style scoped>
 .wrapper {
   height: 100%;
+  overflow: hidden;
 }
 </style>
-=======
-    <div>
-
-    </div>
-</template>
-
-<script>
-export default {
-    name:"app-scroll"
-}
-</script>
-
-<style>
-
-</style>
->>>>>>> branch/jiangqin
