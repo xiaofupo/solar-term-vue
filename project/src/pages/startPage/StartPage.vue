@@ -1,25 +1,11 @@
 <template>
     <div class="page">
-<<<<<<< HEAD
-        <h1>启动页</h1>
-=======
-            <img  v-bind:style="{backgroundImage:'url(' + StateNav + ')'}"
-             v-cloak>
->>>>>>> duqiyu
+        <img  v-bind:style="{backgroundImage:'url(' + StateNav + ')'}"
+            v-cloak>
     </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
-=======
 import {mapState} from 'vuex'
 export default {
    computed:{
@@ -52,4 +38,3 @@ img{
   display: none;
 }
 </style>
->>>>>>> duqiyu

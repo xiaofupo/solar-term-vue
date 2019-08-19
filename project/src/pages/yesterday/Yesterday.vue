@@ -1,19 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="page">
-        <h1>前一天的内容</h1>
-    </div>
-</template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-=======
  <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
     <div class="page">
          <div class="day-header">
@@ -56,5 +41,4 @@ export default {
         margin:10px;
     }
 }
->>>>>>> duqiyu
 </style>

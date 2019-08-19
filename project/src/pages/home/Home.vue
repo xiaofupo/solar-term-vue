@@ -1,10 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="page">
-        <h1>今天的节气</h1>
-        <app-tab></app-tab>
-    </div>
-=======
     <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
         <keep-alive>
             <div class="page" 
@@ -17,22 +11,10 @@
             </div>
         </keep-alive>
     </v-touch>
->>>>>>> duqiyu
 </template>
 
 <script>
 import Tab from "../../components/Tab"
-<<<<<<< HEAD
-export default {
-    components:{
-        [Tab.name]:Tab
-    }
-}
-</script>
-
-<style>
-
-=======
 import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'Queue',
@@ -84,5 +66,4 @@ img{
     bottom:155px;
     right:40px;
 }
->>>>>>> duqiyu
 </style>

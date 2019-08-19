@@ -1,8 +1,5 @@
 <template>
     <div class="page detail">
-<<<<<<< HEAD
-        <h1>首页、名言故事详情页</h1>
-=======
        <div class="detail-header">
           <router-link to="/home">
               <img src="./zuojt.png" alt="" srcset="">
@@ -18,7 +15,6 @@
 
            </div>
        </div>
->>>>>>> duqiyu
     </div>
 </template>
 
@@ -28,10 +24,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-<style>
-
-=======
 
 <style lang="scss" scoped>
 .detail-header{
@@ -56,12 +48,11 @@ export default {
     height:228px;
     margin:10px 0;
     .navimg-conter{
-        width:338px;
+        width:90%;
         height:228px;
         border-radius:8px;
         margin: 0 auto;
         background: #333;
     }
 }
->>>>>>> duqiyu
 </style>
