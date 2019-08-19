@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
-      <div class="collect-icon">
-        <div class="left">
-          <i class="iconfont icon-back"></i>
-        </div>
-        <div class="right">
-          <i class="iconfont icon-xiaoxi"></i>
-          <i class="iconfont icon-shezhi1"></i>
-        </div>
+  <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
+    <div class="collect-icon">
+      <div class="left">
+        <i class="iconfont icon-back"></i>
       </div>
-      <div class="collect-title">
-        <h2>我的收藏</h2>
-        <div class="collect-image">
-          <img src alt="pic" />
-        </div>
+      <div class="right">
+        <i class="iconfont icon-xiaoxi"></i>
+        <i class="iconfont icon-shezhi1"></i>
       </div>
-      <CollectDetail :loginData='loginData' v-if="loginTip"/>
-      <div class="collect-content" v-if="!loginTip">
-        <div class="collect-content-pic">
-          <img src alt="Login" />
-        </div>
-        <div class="collect-content-title">暂无收藏</div>
+    </div>
+    <div class="collect-title">
+      <h2>我的收藏</h2>
+      <div class="collect-image" @click="handleLogin(loginTip)">
+        <img src alt="pic" />
       </div>
+    </div>
+    <CollectDetail :loginData="loginData" v-if="loginTip" />
+    <div class="collect-content" v-if="!loginTip">
+      <div class="collect-content-pic">
+        <img src alt="Login" />
+      </div>
+      <div class="collect-content-title">暂无收藏</div>
     </div>
     <router-view></router-view>
   </div>
@@ -32,16 +30,24 @@
 import CollectDetail from "./children/detail";
 export default {
   name: "collect",
-  data(){
-    return{
-      loginTip:false
+  data() {
+    return {
+      loginTip: false
+    };
+  },
+  methods: {
+    handleLogin(loginTip) {
+      if (loginTip) {
+        return console.log("处于登录状态");
+      } else {
+        this.$router.push("/login");
+      }
     }
   },
   components: {
     CollectDetail
-  },
+  }
   //得到登陆数据判断收藏用户状态
-  
 };
 </script>
 
@@ -49,15 +55,17 @@ export default {
 #collect {
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
+    box-sizing: border-box;
+  position: absolute;
   .collect-icon {
     width: 100%;
     margin-top: 17px;
     line-height: 34px;
     height: 34px;
+    box-sizing: border-box;
     position: relative;
     padding: 0 16px;
     display: flex;
@@ -86,6 +94,7 @@ export default {
     line-height: 50px;
     padding: 0px 28px 0 30px;
     margin-top: 31px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     h2 {

@@ -1,6 +1,6 @@
 <template>
   <div id="Login" style="background: url(../images/login.png)no-repeat 100% 100%;">
-    <div class="login-image">
+    <div class="login-image" @click="handleBack()">
       <i class="iconfont icon-back"></i>
     </div>
     <h1 class="login-title">验证码登录</h1>
@@ -8,7 +8,7 @@
       <div class="phone-item">
         <div class="item-center border-bottom">
           <label class="phone-label">手机号</label>
-          <input type="tel" class="phone" placeholder="loginTel" v-model="loginForm.tel" />
+          <input type="tel" class="phone"  v-model="loginForm.tel" />
         </div>
         <button class="btn btn-submit" @click="ClickSubmit()">发送验证码</button>
         <button class="close_tel2" v-show="!show">重新获取({{count}}s)</button>
@@ -62,6 +62,9 @@ export default {
     };
   },
   methods: {
+    handleBack(){
+      this.$router.push('/')
+    },
     handleAction() {
       this.loginForm.check = true;
     },
@@ -130,7 +133,7 @@ export default {
 #Login {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   overflow: hidden;
   .login-image {
     width: 16px;
