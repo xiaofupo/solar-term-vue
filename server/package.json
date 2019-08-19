@@ -10,14 +10,7 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.17.1",
     "mockjs": "^1.0.1-beta3"
   }
-=======
-    "express": "^4.17.1"
-  },
-  "devDependencies": {},
-  "description": ""
->>>>>>> prokerface
 }

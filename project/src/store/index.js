@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-<<<<<<< HEAD
 Vue.use(Vuex)
 
 //引入模块
 import detail from "./modules/detail";//详情页的仓库
+import login from './modules/login';
 import api from "../util/api"
 import { get } from '../util/request';
 import home from './modules/home';
@@ -36,13 +36,6 @@ export default new Vuex.Store({
   modules:{
     home,
     detail,
-=======
-import login from './modules/login'
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  modules:{
     login
->>>>>>> prokerface
   }
 })
