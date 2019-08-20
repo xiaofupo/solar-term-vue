@@ -109,7 +109,7 @@ export default {
       } else if (this.loginForm.check === false) {
         alert("请确认勾选《用户协议》");
       } else {
-        this.$router.push("/datum");
+        this.$router.push("/private");
       }
     },
     ...mapActions({

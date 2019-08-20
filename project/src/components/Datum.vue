@@ -22,7 +22,7 @@
           <div class="title">
             <label class="from-label">修改头像</label>
             <div class="image">
-              <img src alt="datum" />
+              <img :src="loginTip.url" alt="loginTip.name" />
             </div>
           </div>
           <div class="datum-name from-item">
@@ -31,7 +31,7 @@
           </div>
           <div class="from-item">
             <label class="from-label">性别</label>
-            <select class="label">
+            <select class="label" v-model="loginTip.gender">
               <option value="保密">保密</option>
               <option value="男">男</option>
               <option value="女">女</option>
@@ -40,9 +40,9 @@
           <div class="from-item">
             <label class="from-label">生日</label>
             <div class="birthday" @click="showPopup">
-              <span>{{currentDate.years}}</span>/
-              <span>{{currentDate.month}}</span>/
-              <span>{{currentDate.day}}</span>
+              <span>{{this.loginTip.birthday.years}}</span>/
+              <span>{{this.loginTip.birthday.month}}</span>/
+              <span>{{this.loginTip.birthday.day}}</span>
             </div>
             <van-popup v-model="show">
               <van-datetime-picker
@@ -56,15 +56,15 @@
           </div>
           <div class="from-item">
             <label class="from-label">电话号码</label>
-            <input type="tel" class="location" placeholder="15955555555" />
+            <input type="tel" class="location" placeholder="15955555555" v-model="loginTip.tel"/>
           </div>
           <div class="from-item">
             <label class="from-label">所在地区</label>
-            <input type="text" class="location" placeholder="广东省深圳市宝安区" />
+            <input type="text" class="location" placeholder="广东省深圳市宝安区" v-model="loginTip.region" />
           </div>
           <div class="from-item">
             <label class="from-label">详细地址</label>
-            <input class="location" type="text" placeholder=" 请填写真实有效的地址" />
+            <input class="location" type="text" placeholder=" 请填写真实有效的地址" v-model="loginTip.street"/>
           </div>
         </div>
       </div>
@@ -203,10 +203,10 @@ export default {
         .image {
           width: 43px;
           height: 43px;
-          border: 1px solid #333333;
           img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
           }
         }
       }
@@ -232,6 +232,7 @@ export default {
         }
         .nickname {
           text-align: right;
+          font-size: 14px;
         }
       }
       .from-item:last-of-type {
