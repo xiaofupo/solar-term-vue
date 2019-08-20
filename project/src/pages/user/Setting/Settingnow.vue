@@ -1,7 +1,14 @@
 <template>
     <div class="page" id="setting">
       <!-- 未登录状态 -->
+      <div v-if="!(isLogin)">
         <Seeting-head></Seeting-head>
+        <Seetingnav></Seetingnav>
+      </div>
+      <div v-else>
+        <SeetingHeadStart></SeetingHeadStart>
+        <SeetingnavStart></SeetingnavStart>
+      </div>
       <!-- <div class="nav-herad">
        
             <p>
@@ -32,20 +39,29 @@
   
           
       </div> -->
-     <Seetingnav></Seetingnav>
+     
     </div>
 </template>
 
 <script>
-
+import {mapState} from "vuex";
 import SeetingHead from "./Children/Seetinghead.vue";
 import Seetingnav from "./Children/Settingnav.vue";
+import SeetingHeadStart from "./Children/Seetingheadstart.vue";
+import SeetingnavStart from "./Children/Settingnavstart.vue";
 
 
 export default {
   components: {
     SeetingHead,
-    Seetingnav 
+    Seetingnav,
+    SeetingHeadStart,
+    SeetingnavStart
+  },
+  computed: {
+    ...mapState({
+      isLogin:state=>state.login.isLogin
+    })
   },
 
 };

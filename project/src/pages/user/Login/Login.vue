@@ -62,8 +62,11 @@ export default {
     };
   },
   methods: {
+    ...mapMutations({
+      changeIsLogin:"login/changeIsLogin"
+    }),
     handleBack(){
-      this.$router.push('/')
+      this.$router.go(-1);
     },
     handleAction() {
       this.loginForm.check = true;
@@ -104,7 +107,10 @@ export default {
       } else if (this.loginForm.check === false) {
         alert("请确认勾选《用户协议》");
       } else {
-        this.$router.push("/datum");
+        // this.$router.push("/datum");
+        //返回到点进来的页面
+        this.changeIsLogin(true);
+        this.$router.go(-1);
       }
     },
     getlogintip(){
@@ -113,7 +119,7 @@ export default {
   },
   //得到数据相应的数据
   computed: {
-    ...mapMutations({
+    ...mapState({
       loginTel:state=>state.login.loginTel
     })
   },

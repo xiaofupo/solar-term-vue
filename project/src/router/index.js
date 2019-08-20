@@ -27,10 +27,7 @@ const routes = [
     path: '/detail',//分享页
     component: ()=>import('../pages/common/Detail/Detail'),
   },
-  {
-    path:"/pic-group",
-    component:()=>import("../pages/common/PicGroup/PicGroup")
-  },
+  ,
   ...home,
   ...yesterday,
   ...beforeyesterday,

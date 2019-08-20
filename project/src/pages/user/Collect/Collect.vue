@@ -1,18 +1,21 @@
 <template>
   <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
     <div class="collect-icon">
-      <div class="left">
+      <div class="left" @click="goBack">
         <i class="iconfont icon-back"></i>
       </div>
       <div class="right">
         <i class="iconfont icon-xiaoxi"></i>
-        <i class="iconfont icon-shezhi1"></i>
+        <router-link to="/collect/setting">
+           <i class="iconfont icon-shezhi1"></i>
+        </router-link>
+       
       </div>
     </div>
     <div class="collect-title">
       <h2>我的收藏</h2>
-      <div class="collect-image" @click="handleLogin(loginTip)">
-        <img src alt="pic" />
+      <div class="collect-image">
+        <img src alt="pic" @click="handleLogin(loginTip)"/>
       </div>
     </div>
     <CollectDetail :loginData="loginData" v-if="loginTip" />
@@ -28,6 +31,7 @@
 
 <script>
 import CollectDetail from "./children/detail";
+import {mapState} from "vuex";
 export default {
   name: "collect",
   data() {
@@ -35,13 +39,22 @@ export default {
       loginTip: false
     };
   },
+  computed: {
+    ...mapState({
+      isLogin:state=>state.login.isLogin
+    })
+  },
   methods: {
     handleLogin(loginTip) {
-      if (loginTip) {
+      /* if (loginTip) {
         return console.log("处于登录状态");
       } else {
         this.$router.push("/login");
-      }
+      } */
+      this.isLogin ? this.$router.push("/datum"):this.$router.push("/login");
+    },
+    goBack(){
+      this.$router.go(-1);
     }
   },
   components: {

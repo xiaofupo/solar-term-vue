@@ -2,7 +2,7 @@
 <!-- 已登录状态 -->
     <div class="page" id="setting">
         <Seeting-start-head></Seeting-start-head>
-     <Seeting-startnav></Seeting-startnav>
+        <Seeting-startnav></Seeting-startnav>
     </div>
 </template>
 

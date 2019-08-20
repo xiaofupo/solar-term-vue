@@ -1,38 +1,37 @@
 <template>
     <div class="page detail">
-       <div class="detail-header">
-          <router-link to="/home">
-              <img src="./zuojt.png" alt="" srcset="">
-          </router-link>
-       </div>
-       <div class="detail-nav">
-           <p>
-               今日大暑
-           </p>
-       </div>
-       <div class="navimg">
-           <div class="navimg-conter">
+       <!-- <div class="detail-header"> -->
+          <app-header></app-header>
+       <!-- </div> -->
+       <div class="content">
+           <div class="detail-nav">
+                <p>
+                    今日大暑
+                </p>
+            </div>
+            <div class="navimg">
+                <div class="navimg-conter">
 
-           </div>
+                </div>
+            </div>
        </div>
+       
     </div>
 </template>
 
 <script>
+import Header from "../../../components/Header";
 export default {
-
+    components:{
+        [Header.name]:Header
+    }
 }
 </script>
 
 
 <style lang="scss" scoped>
-.detail-header{
-    width:100%;
-    img{
-        width:30px;
-        height:30px;
-        margin:10px;
-    }
+.detail{
+    background: #fff;
 }
 .detail-nav{
     width:100%;

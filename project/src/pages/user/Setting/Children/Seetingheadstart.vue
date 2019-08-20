@@ -7,7 +7,7 @@
              </div>
              <div class="logo-text">
                     <img src="../img/logohost.png" alt="">
-                    <p>请登录</p>
+                    <!-- <p>请登录</p> -->
             </div>           
               <div class="logo-footer">
                     <p>我的收藏</p>

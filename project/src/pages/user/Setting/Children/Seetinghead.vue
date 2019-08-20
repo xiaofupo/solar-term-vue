@@ -6,8 +6,11 @@
                  <router-link to='/collect'>返回</router-link>
              </div>
              <div class="logo-text">
-                    <img src="../img/logohost.png" alt="">
-                    <p>请登录</p>
+               <router-link to="/login">
+                  <img src="../img/logohost.png" alt="">
+                  <p>请登录</p>
+               </router-link>
+                    
             </div>           
               <div class="logo-footer">
                     <p>我的收藏</p>

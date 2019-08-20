@@ -66,14 +66,17 @@ export default {
     background: #ffffff;
     margin-top: 4px;
     line-height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     //    display: inline-block;
-    & p {
+    p {
       font-size: 14px;
       padding-left: 20px;
-      display: inline-block;
     }
-    & div {
+    div {
       float: right;
+      margin-right: 5px;
     }
   }
     .nav-three {

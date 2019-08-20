@@ -64,10 +64,12 @@ export default {
     margin-top: 4px;
     line-height: 65px;
     //    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     & p {
       font-size: 14px;
       padding-left: 20px;
-      display: inline-block;
     }
     & div {
       float: right;
