@@ -1,11 +1,7 @@
 <template>
   <div>
     <Loading v-if="flag" />
-    <div
-      id="datum"
-      style="background: url(../images/datum.png)no-repeat 100% 100%;"
-      v-if="!flag"
-    >
+    <div id="datum" style="background: url(../images/datum.png)no-repeat 100% 100%;" v-if="!flag">
       <div class="collect-icon">
         <div class="left" @click="handleBack()">
           <i class="iconfont icon-back"></i>
@@ -77,7 +73,7 @@
 </template>
 
 <script>
-import { mapState ,mapActions} from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "datum",
   data() {
@@ -86,8 +82,7 @@ export default {
       maxDate: new Date(2020, 12, 12),
       currentDate: { years: 1999, month: 1, day: 1 },
       show: false,
-      submit: false,
-      flag: false
+      submit: false
     };
   },
   methods: {
@@ -104,8 +99,8 @@ export default {
       this.$store.dispatch("login/getloginTip");
     },
     ...mapActions({
-      getloginTip:'login/getloginTip'
-    }),
+      getloginTip: "login/getloginTip"
+    })
   },
   created() {
     this.getInitData();
@@ -113,7 +108,8 @@ export default {
   //登陆后填入信息，和读取用户已存入的信息
   computed: {
     ...mapState({
-      loginTip: state => state.login.loginTip
+      loginTip: state => state.login.loginTip,
+      flag: state => state.login.flag
     })
   }
 };
