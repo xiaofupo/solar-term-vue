@@ -1,4 +1,6 @@
 <template>
+<div>
+    <Loading v-if="loginTip"/>
   <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
     <div class="collect-icon">
       <div class="left">
@@ -23,6 +25,7 @@
       <div class="collect-content-title">暂无收藏</div>
     </div>
   </div>
+</div>
 </template>
 
 <script>

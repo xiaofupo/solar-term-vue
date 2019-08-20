@@ -1,52 +1,55 @@
 <template>
-  <div id="Login" style="background: url(../images/login.png)no-repeat 100% 100%;">
-    <div class="login-image" @click="handleBack()">
-      <i class="iconfont icon-back"></i>
-    </div>
-    <h1 class="login-title">验证码登录</h1>
-    <div class="login-phone">
-      <div class="phone-item">
-        <div class="item-center border-bottom">
-          <label class="phone-label">手机号</label>
-          <input type="tel" class="phone"  v-model="loginForm.tel" />
+  <div>
+    <Loading v-if="flag" />
+    <div id="Login" style="background: url(../images/login.png)no-repeat 100% 100%;" v-if="!flag">
+      <div class="login-image" @click="handleBack()">
+        <i class="iconfont icon-back"></i>
+      </div>
+      <h1 class="login-title">验证码登录</h1>
+      <div class="login-phone">
+        <div class="phone-item">
+          <div class="item-center border-bottom">
+            <label class="phone-label">手机号</label>
+            <input type="tel" class="phone" v-model="loginForm.tel" />
+          </div>
+          <button class="btn btn-submit" @click="ClickSubmit()">发送验证码</button>
+          <button class="close_tel2" v-show="!show">重新获取({{count}}s)</button>
         </div>
-        <button class="btn btn-submit" @click="ClickSubmit()">发送验证码</button>
-        <button class="close_tel2" v-show="!show">重新获取({{count}}s)</button>
-      </div>
 
-      <div class="phone-code border-bottom">
-        <label class="phone-label">验证码</label>
-        <input type="number" class="tel" v-model="loginForm.msg" />
-      </div>
-      <button class="phone-submit" @click="submitClick()">登录</button>
-      <div class="login-deal">
-        <i
-          @click="handleAction()"
-          :class="loginForm.check?'iconfont icon-circle':'iconfont icon-circle1'"
-        ></i>
-        <span class="deal-text">
-          已完成阅读并同意
-          <a href="#">《用户协议》</a>
-        </span>
-      </div>
-      <div class="login-switch">或使用快速登录</div>
-      <div class="login-scan">
-        <span>
-          <i class="iconfont icon-qq"></i>
-        </span>
-        <span>
-          <i class="iconfont icon-weixin"></i>
-        </span>
-        <span>
-          <i class="iconfont icon-weibo"></i>
-        </span>
+        <div class="phone-code border-bottom">
+          <label class="phone-label">验证码</label>
+          <input type="number" class="tel" v-model="loginForm.msg" />
+        </div>
+        <button class="phone-submit" @click="submitClick()">登录</button>
+        <div class="login-deal">
+          <i
+            @click="handleAction()"
+            :class="loginForm.check?'iconfont icon-circle':'iconfont icon-circle1'"
+          ></i>
+          <span class="deal-text">
+            已完成阅读并同意
+            <a href="#">《用户协议》</a>
+          </span>
+        </div>
+        <div class="login-switch">或使用快速登录</div>
+        <div class="login-scan">
+          <span>
+            <i class="iconfont icon-qq"></i>
+          </span>
+          <span>
+            <i class="iconfont icon-weixin"></i>
+          </span>
+          <span>
+            <i class="iconfont icon-weibo"></i>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState,mapMutations } from "vuex";
+import { mapState, mapMutations,mapActions } from "vuex";
 export default {
   name: "login",
   data() {
@@ -62,8 +65,8 @@ export default {
     };
   },
   methods: {
-    handleBack(){
-      this.$router.push('/')
+    handleBack() {
+      this.$router.back();
     },
     handleAction() {
       this.loginForm.check = true;
@@ -73,12 +76,14 @@ export default {
       const TIME_COUNT = 30;
       var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; // 验证是不是以13,15,18,17开头的数字
       if (this.loginForm.tel === "") {
-       return alert("手机号不能为空！");
+        return alert("手机号不能为空！");
       } else if (this.loginForm.tel.length !== 11) {
-       return alert("请输入11位的手机号码！");
+        return alert("请输入11位的手机号码！");
       } else if (!myreg.test(this.loginForm.tel)) {
-       return alert("请输入有效的手机号码！");
-      };
+        return alert("请输入有效的手机号码！");
+      } else {
+        this.$store.commit("login/getloginTip");
+      }
       if (!this.timer) {
         this.count = TIME_COUNT;
         this.show = false;
@@ -96,8 +101,8 @@ export default {
     submitClick() {
       var num = /^\d{6}$/; // 验证是否6位数字
       if (this.loginForm.tel === "") {
-       return alert("手机号不能为空！");
-      }else if (this.loginForm.msg === "") {
+        return alert("手机号不能为空！");
+      } else if (this.loginForm.msg === "") {
         alert("请填写验证码！");
       } else if (!num.test(this.loginForm.msg)) {
         alert("请填写正确的验证码！");
@@ -107,25 +112,24 @@ export default {
         this.$router.push("/datum");
       }
     },
-    getlogintip(){
-      this.$store.dispatch("login/getloginTip")
+    ...mapActions({
+      getloginTip:'login/getloginTip'
+    }),
+    getlogintip() {
+      this.$store.dispatch("login/getloginTip");
     }
   },
   //得到数据相应的数据
   computed: {
-    ...mapMutations({
-      loginTel:state=>state.login.loginTel
+    ...mapState({
+    loginTip:state=>state.login.loginTip,
+    flag:state=>state.login.flag
     })
   },
-  created(){
+  created() {
     this.getlogintip();
-  },
-  //监听手机号码 触发验证码发送到手机上
-  watch:{
-    loginForm(tel){
-      this.$store.commit('login/getloginTip',tel)
-    }
   }
+  //监听手机号码 触发验证码发送到手机上
 };
 </script>
 

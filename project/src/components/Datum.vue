@@ -1,68 +1,75 @@
 <template>
-  <div id="datum" style="background: url(../images/datum.png)no-repeat 100% 100%;">
-    <div class="collect-icon">
-      <div class="left" @click="handleBack()">
-        <i class="iconfont icon-back"></i>
-      </div>
-      <div class="right" @click="handleSubmit()">
-        <i class="iconfont icon-xuanze2"></i>
-      </div>
-      <van-popup v-model="submit">
-        <div class="reminder">
+  <div>
+    <Loading v-if="flag" />
+    <div
+      id="datum"
+      style="background: url(../images/datum.png)no-repeat 100% 100%;"
+      v-if="!flag"
+    >
+      <div class="collect-icon">
+        <div class="left" @click="handleBack()">
+          <i class="iconfont icon-back"></i>
+        </div>
+        <div class="right" @click="handleSubmit()">
           <i class="iconfont icon-xuanze2"></i>
-          <span>保存成功</span>
         </div>
-      </van-popup>
-    </div>
-    <div class="datum-content">
-      <h1>完善资料</h1>
-      <div class="datum-from">
-        <div class="title">
-          <label class="from-label">修改头像</label>
-          <div class="image">
-            <img src alt="datum" />
+        <van-popup v-model="submit">
+          <div class="reminder">
+            <i class="iconfont icon-xuanze2"></i>
+            <span>保存成功</span>
           </div>
-        </div>
-        <div class="datum-name from-item">
-          <label class="from-label">修改昵称</label>
-          <input type="text" class="nickname"  v-model="loginTip.name" />
-        </div>
-        <div class="from-item">
-          <label class="from-label">性别</label>
-          <select class="label">
-            <option value="保密">保密</option>
-            <option value="男">男</option>
-            <option value="女">女</option>
-          </select>
-        </div>
-        <div class="from-item">
-          <label class="from-label">生日</label>
-          <div class="birthday" @click="showPopup">
-            <span>{{currentDate.years}}</span>/
-            <span>{{currentDate.month}}</span>/
-            <span>{{currentDate.day}}</span>
+        </van-popup>
+      </div>
+      <div class="datum-content">
+        <h1>完善资料</h1>
+        <div class="datum-from">
+          <div class="title">
+            <label class="from-label">修改头像</label>
+            <div class="image">
+              <img src alt="datum" />
+            </div>
           </div>
-          <van-popup v-model="show">
-            <van-datetime-picker
-              :min-date="minDate"
-              :max-date="maxDate"
-              v-model="currentDate"
-              type="date"
-              ref="birthday"
-            />
-          </van-popup>
-        </div>
-        <div class="from-item">
-          <label class="from-label">电话号码</label>
-          <input type="tel" class="location" placeholder="15955555555" />
-        </div>
-        <div class="from-item">
-          <label class="from-label">所在地区</label>
-          <input type="text" class="location" placeholder="广东省深圳市宝安区" />
-        </div>
-        <div class="from-item">
-          <label class="from-label">详细地址</label>
-          <input class="location" type="text" placeholder=" 请填写真实有效的地址" />
+          <div class="datum-name from-item">
+            <label class="from-label">修改昵称</label>
+            <input type="text" class="nickname" v-model="loginTip.name" />
+          </div>
+          <div class="from-item">
+            <label class="from-label">性别</label>
+            <select class="label">
+              <option value="保密">保密</option>
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select>
+          </div>
+          <div class="from-item">
+            <label class="from-label">生日</label>
+            <div class="birthday" @click="showPopup">
+              <span>{{currentDate.years}}</span>/
+              <span>{{currentDate.month}}</span>/
+              <span>{{currentDate.day}}</span>
+            </div>
+            <van-popup v-model="show">
+              <van-datetime-picker
+                :min-date="minDate"
+                :max-date="maxDate"
+                v-model="currentDate"
+                type="date"
+                ref="birthday"
+              />
+            </van-popup>
+          </div>
+          <div class="from-item">
+            <label class="from-label">电话号码</label>
+            <input type="tel" class="location" placeholder="15955555555" />
+          </div>
+          <div class="from-item">
+            <label class="from-label">所在地区</label>
+            <input type="text" class="location" placeholder="广东省深圳市宝安区" />
+          </div>
+          <div class="from-item">
+            <label class="from-label">详细地址</label>
+            <input class="location" type="text" placeholder=" 请填写真实有效的地址" />
+          </div>
         </div>
       </div>
     </div>
@@ -70,7 +77,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState ,mapActions} from "vuex";
 export default {
   name: "datum",
   data() {
@@ -80,7 +87,7 @@ export default {
       currentDate: { years: 1999, month: 1, day: 1 },
       show: false,
       submit: false,
-      
+      flag: false
     };
   },
   methods: {
@@ -95,7 +102,10 @@ export default {
     },
     getInitData() {
       this.$store.dispatch("login/getloginTip");
-    }
+    },
+    ...mapActions({
+      getloginTip:'login/getloginTip'
+    }),
   },
   created() {
     this.getInitData();
@@ -103,8 +113,8 @@ export default {
   //登陆后填入信息，和读取用户已存入的信息
   computed: {
     ...mapState({
-      loginTip:state=>state.login.loginTip
-    }),
+      loginTip: state => state.login.loginTip
+    })
   }
 };
 </script>
@@ -114,11 +124,13 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  position: absolute;
   .collect-icon {
     width: 100%;
     margin-top: 17px;
     line-height: 34px;
     height: 34px;
+    box-sizing: border-box;
     position: relative;
     padding: 0 16px;
     display: flex;
@@ -145,6 +157,7 @@ export default {
       font-size: 14px;
       line-height: 20px;
       display: flex;
+      box-sizing: border-box;
       flex-direction: column;
       align-items: center;
       .icon-xuanze2 {
@@ -163,6 +176,7 @@ export default {
   .datum-content {
     padding: 0 30px;
     width: 100%;
+    box-sizing: border-box;
     h1 {
       font-size: 24px;
       color: #333333;
@@ -172,11 +186,12 @@ export default {
       margin: 25px 0;
     }
     .datum-from {
-      height: 392px;
+      height: 420px;
       background: #fff;
       box-shadow: 0px 3px 4px #888888;
       border-radius: 4px;
       padding: 2px 15px 12px 15px;
+      box-sizing: border-box;
       .from-label {
         color: #666666;
         font-size: 14px;

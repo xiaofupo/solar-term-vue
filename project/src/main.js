@@ -6,7 +6,7 @@ import store from './store'
 import VueTouch from 'vue-touch'
 Vue.use(VueTouch, {name: 'v-touch'})
 import { DatetimePicker,Popup,Toast } from 'vant';
-
+import './pages/common'
 Vue.use(DatetimePicker)
 Vue.use(Popup)
 Vue.use(Toast)

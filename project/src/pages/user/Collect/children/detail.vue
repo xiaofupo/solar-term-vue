@@ -1,37 +1,43 @@
 <template>
-  <div class="collect-item">
-    <ul class="collet-list">
-      <li
-        class="collect-detail"
-        style="background: url(../images/Gradient.png)no-repeat 100% 100%;"
-      >
-        <div class="detail-item">
-          <div class="calendar">
-            <span class="month">07</span>
-            <span class="day">12</span>
+  <div>
+    <div class="collect-item">
+      <ul class="collet-list">
+        <li
+          class="collect-detail"
+          style="background: url(../images/Gradient.png)no-repeat 100% 100%;"
+        >
+          <div class="detail-item">
+            <div class="calendar">
+              <span class="month">07</span>
+              <span class="day">12</span>
+            </div>
+            <div class="detail-title">
+              <p>我还有改变的可能...</p>
+              <p class="name">北野武</p>
+            </div>
+            <div class="detail-img">
+              <img src alt="icon" />
+            </div>
           </div>
-          <div class="detail-title">
-            <p>我还有改变的可能...</p>
-            <p class="name">北野武</p>
-          </div>
-          <div class="detail-img">
-            <img src='' alt='icon' />
-          </div>
+        </li>
+      </ul>
+      <div class="detail-more">
+        <div class="collect-content-pic">
+          <img src alt="Login" />
         </div>
-      </li>
-    </ul>
-    <div class="detail-more">
-      <div class="collect-content-pic">
-        <img src alt="Login" />
+        <div class="collect-content-title">没有更多了</div>
       </div>
-      <div class="collect-content-title">没有更多了</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "collect-detail"
+  name: "collect-detail",
+  data(){
+    return{
+    }
+  }
 };
 </script>
 

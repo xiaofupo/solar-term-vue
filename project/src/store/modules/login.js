@@ -5,20 +5,23 @@ import { get } from '../../util/request'
 const state = {
     loginTip: [],
     getlogin:17695772185,
-    loginTel:''
+    loginTel:'',
+    flag:true
 }
 const mutations = {
     handleLoginTip(state, params) {
         state.loginTip = params
+        state.flag = false
     },
     handleLoginTel(state,params){
         state.loginTel = params
+        
     }
 }
 const actions = {
     async getloginTip({commit},tel) {
         let data = await get(api.GET_LOGINTIP);
-        let newData = data.data.map(({name,birthday})=>({name,birthday}))
+        let newData = data.data
         // 设置显示的信息
         console.log(tel)
         commit('handleLoginTip',newData)
