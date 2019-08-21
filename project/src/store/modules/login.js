@@ -6,11 +6,17 @@ const state = {
     loginTip: [],
     getlogin:17695772185,
     loginTel:'',
-    isLogin:false
+    isLogin:false,
+    flag:true,
+    loginOpen:true ,
+    collect:[]
 }
 const mutations = {
     handleLoginTip(state, params) {
-        state.loginTip = params
+        state.loginTip = params,
+        state.flag = false,
+        state.loginOpen=false,
+        state.collect = params.collect
     },
     handleLoginTel(state,params){
         state.loginTel = params
@@ -20,14 +26,11 @@ const mutations = {
     }
 }
 const actions = {
-    async getloginTip({commit},tel) {
+    async getloginTip(context,param) {
         let data = await get(api.GET_LOGINTIP);
-        // console.log(data);
-        let {name,birthday} = data
+        let newData = data.data
         // 设置显示的信息
-        // console.log(tel)
-        commit('handleLoginTip',{name,birthday})
-        // console.log(newData)
+        context.commit('handleLoginTip',newData)
     }
 }
 

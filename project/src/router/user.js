@@ -2,6 +2,7 @@ export default [
     {
         path:"/collect",
         component:()=>import('../pages/user/Collect/Collect'),
+        name:"collect",
         children:[
             {
                 path:'message',
@@ -31,5 +32,14 @@ export default [
                        ]
             },
         ]
+    },
+    {
+        path: "/private",
+        component: () => import("../pages/user/Collect/children/private"),
+        name: 'private',
+        meta: {
+            tabBarFlag: true
+        }
     }
+
 ]

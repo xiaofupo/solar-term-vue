@@ -62,7 +62,7 @@ export default {
     components:{
         [Tab.name]:Tab
     },
-   created(){
+   create(){
        this.getStartInitData();
    },
    destroyed(){

@@ -1,5 +1,8 @@
 <template>
-  <div id="collect" style="background: url(../images/collect.png)no-repeat 100% 100%;">
+<div class="page">
+  <div id="collect" 
+  style="background: url(../images/collect.png)no-repeat 100% 100%;"
+  v-if="!isLogin">
     <div class="collect-icon">
       <div class="left" @click="goBack">
         <i class="iconfont icon-back"></i>
@@ -18,47 +21,82 @@
         <img src alt="pic" @click="handleLogin(loginTip)"/>
       </div>
     </div>
-    <CollectDetail :loginData="loginData" v-if="loginTip" />
+   <!--  <CollectDetail :loginData="loginData" v-if="loginTip" /> -->
     <div class="collect-content" v-if="!loginTip">
       <div class="collect-content-pic">
         <img src alt="Login" />
+        <!-- <div>
+          <Loading v-if="loginOpen" />
+          <div
+            id="collect"
+            style="background: url(../images/collect.png)no-repeat 100% 100%;"
+            v-if="!loginOpen"
+          >
+            <div class="collect-icon">
+              <div class="left">
+                <i class="iconfont icon-back"></i>
+              </div>
+              <div class="right">
+                <i class="iconfont icon-xiaoxi"></i>
+                <i class="iconfont icon-shezhi1"></i>
+              </div>
+            </div>
+            <div class="collect-title">
+              <h2>我的收藏</h2>
+              <div class="collect-image" @click="handleLogin()" style="background:#999;">
+                <img src="/images/pic.png" alt="pic" />
+              </div>
+            </div>
+            <div class="collect-content" >
+              <div class="collect-content-pic">
+                <img src='/images/img_no collect@2x.png' alt="Login" />
+              </div>
+              <div class="collect-content-title">暂无收藏</div> -->
+
+ 
       </div>
-      <div class="collect-content-title">暂无收藏</div>
     </div>
-    <router-view></router-view>
+    
   </div>
+  <private v-else/>
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
-import CollectDetail from "./children/detail";
-import {mapState} from "vuex";
+import CollectDetail from "./children/private";
+import { mapState, mapActions, mutations } from "vuex";
 export default {
   name: "collect",
-  data() {
-    return {
-      loginTip: false
-    };
+  components:{
+    [CollectDetail.name]:CollectDetail
+  },
+  methods: {
+    handleLogin() {
+        // this.$router.push("/login");
+        this.isLogin ? this.$router.push("/datum"):this.$router.push("/login");
+    },
+    ...mapActions({
+      getloginTip: "login/getloginTip"
+    }),
+    getlogintip() {
+      this.$store.dispatch("login/getloginTip");
+    },
+    goBack(){
+      this.$router.push("/home");
+    }
   },
   computed: {
     ...mapState({
+      loginOpen: state => state.login.loginOpen,
+      loginTip: state => state.login.loginTip,
+      flag: state => state.login.flag,
+      collect:state=>state.login.collect,
       isLogin:state=>state.login.isLogin
     })
   },
-  methods: {
-    handleLogin(loginTip) {
-      /* if (loginTip) {
-        return console.log("处于登录状态");
-      } else {
-        this.$router.push("/login");
-      } */
-      this.isLogin ? this.$router.push("/datum"):this.$router.push("/login");
-    },
-    goBack(){
-      this.$router.go(-1);
-    }
-  },
-  components: {
-    CollectDetail
+  created() {
+    this.getlogintip();
   }
   //得到登陆数据判断收藏用户状态
 };
@@ -68,10 +106,10 @@ export default {
 #collect {
   width: 100%;
   height: 100%;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-    box-sizing: border-box;
+  box-sizing: border-box;
   position: absolute;
   .collect-icon {
     width: 100%;
@@ -137,6 +175,10 @@ export default {
       height: 63px;
       background: #fff;
       margin-bottom: 39px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
     }
     .collect-content-title {
       width: 74px;

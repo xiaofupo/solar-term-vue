@@ -1,8 +1,35 @@
 {
-        "name":"张三",
-        "birthday":{
-            "years":"2000",
-            "month":"12",
-            "day":"12"
+    "name": "张三",
+    "gender": "男",
+    "url": "https://yanxuan.nosdn.127.net/15560925312347534.jpg",
+    "birthday": {
+        "years": "2000",
+        "month": "12",
+        "day": "12"
+    },
+    "tel": "17696772185",
+    "region": "广东省深圳市宝安区",
+    "street": "拔南村23栋609室",
+    "collect": [
+        {
+            "time": {
+                "month": "7",
+                "day": "28"
+            },
+            "matter": "我还有改变的可能我还有改变的可能",
+            "writer": "北野武",
+            "url": "https://www.easyicon.net/api/resizeApi.php?id=1233775&size=24",
+            "classify": "地理"
+        },
+        {
+            "time": {
+                "month": "7",
+                "day": "28"
+            },
+            "matter": "我还有改变的可能我还有改变的可能",
+            "writer": "北野武",
+            "url": "https://www.easyicon.net/api/resizeApi.php?id=1233775&size=24",
+            "classify": "地理"
         }
+    ]
 }

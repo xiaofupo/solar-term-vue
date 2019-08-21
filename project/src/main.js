@@ -9,6 +9,7 @@ import { DatetimePicker,Popup,Toast } from 'vant';
 
 Vue.config.productionTip = false
 
+import './pages/common'
 Vue.use(DatetimePicker)
 Vue.use(Popup)
 Vue.use(Toast)
